@@ -20,27 +20,16 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
 
-    - name: Cache Gradle packages
-      uses: actions/cache@v3
+    - name: Setup Gradle
+      uses: gradle/actions/setup-gradle@v3
       with:
-        path: |
-          ~/.gradle/caches
-          ~/.gradle/wrapper
-        key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
-        restore-keys: |
-          ${{ runner.os }}-gradle-
-
-    - name: Grant execute permission for gradlew
-      run: chmod +x gradlew
-
-    - name: Build with Gradle
-      run: ./gradlew build
+        gradle-version: 8.2
 
     - name: Build Debug APK
-      run: ./gradlew assembleDebug
+      run: gradle assembleDebug
 
     - name: Build Release APK
-      run: ./gradlew assembleRelease
+      run: gradle assembleRelease
 
     - name: Upload Debug APK
       uses: actions/upload-artifact@v4
@@ -53,10 +42,3 @@ jobs:
       with:
         name: app-release
         path: app/build/outputs/apk/release/app-release-unsigned.apk
-
-    - name: Upload Build Reports
-      uses: actions/upload-artifact@v4
-      if: always()
-      with:
-        name: build-reports
-        path: app/build/reports/
