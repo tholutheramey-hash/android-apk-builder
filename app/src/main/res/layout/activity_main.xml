@@ -1,47 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_color"
-    tools:context=".MainActivity">
+    android:background="#0A0D12">
 
-    <TextView
-        android:id="@+id/welcomeText"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/setupScreen"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/welcome_message"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:textColor="@color/primary_text"
-        android:layout_marginTop="100dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="vertical"
+        android:padding="32dp"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_max="500dp">
 
-    <Button
-        android:id="@+id/clickButton"
-        android:layout_width="200dp"
-        android:layout_height="60dp"
-        android:text="@string/click_me"
-        android:textSize="18sp"
-        android:layout_marginTop="50dp"
-        android:backgroundTint="@color/button_color"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/welcomeText" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="BROADCAST RECEIVER"
+            android:textColor="#FFB020"
+            android:textSize="12sp"
+            android:letterSpacing="0.16"
+            android:fontFamily="monospace"
+            android:layout_marginBottom="16dp" />
 
-    <TextView
-        android:id="@+id/countText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/initial_count"
-        android:textSize="16sp"
-        android:textColor="@color/secondary_text"
-        android:layout_marginTop="30dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/clickButton" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Store Display Controller"
+            android:textColor="#E7EAEE"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Enter your Firebase URL to connect all devices"
+            android:textColor="#8B93A1"
+            android:textSize="14sp"
+            android:layout_marginBottom="28dp" />
+
+        <EditText
+            android:id="@+id/firebaseUrlInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="https://your-project-default-rtdb.firebaseio.com"
+            android:textColor="#E7EAEE"
+            android:textColorHint="#4B5261"
+            android:background="#0D1016"
+            android:padding="14dp"
+            android:textSize="14sp"
+            android:fontFamily="monospace"
+            android:inputType="textUri"
+            android:layout_marginBottom="16dp" />
+
+        <Button
+            android:id="@+id/saveButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SAVE &amp; START LISTENING"
+            android:textColor="#1A1200"
+            android:backgroundTint="#FFB020"
+            android:padding="16dp"
+            android:textStyle="bold"
+            android:textSize="15sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/listeningScreen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:visibility="gone">
+
+        <ProgressBar
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:indeterminateTint="#FFB020"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:id="@+id/statusText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Listening for broadcasts..."
+            android:textColor="#8B93A1"
+            android:textSize="14sp"
+            android:fontFamily="monospace" />
+
+        <TextView
+            android:id="@+id/lastCommandText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="#E7EAEE"
+            android:textSize="12sp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="monospace" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
