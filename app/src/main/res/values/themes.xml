@@ -1,9 +1,10 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.SampleApp" parent="Theme.Material3.DayNight">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+<resources>
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">#FFB020</item>
+        <item name="colorPrimaryVariant">#FFB020</item>
+        <item name="colorOnPrimary">#1A1200</item>
+        <item name="android:statusBarColor">#0A0D12</item>
+        <item name="android:navigationBarColor">#0A0D12</item>
+        <item name="android:windowBackground">#0A0D12</item>
     </style>
-
-    <style name="Theme.SampleApp" parent="Base.Theme.SampleApp" />
 </resources>
